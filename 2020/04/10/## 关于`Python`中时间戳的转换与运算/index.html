@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://windgirl0806.github.io">
-  <title>Archives: 2020 | 折荷有赠</title>
+  <title>## 关于`Python`中时间戳的转换与运算 | 折荷有赠</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="折荷有赠">
-<meta property="og:url" content="https://windgirl0806.github.io/archives/2020/index.html">
+  <meta name="description" content="关于Python中时间戳的转换与运算1.简介在编写代码时，经常涉及到时间、日期、以及时间戳的相互转换 2.实例12#导入datetime模块,以及time模块import datetime,time 3.datetime类型的日期转换成时间戳12345678#获取当前时间 now &#x3D; datetime.datetime.now()#datetime类型的now 转换成UNIX时间时间戳(需要用到t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="## 关于&#96;Python&#96;中时间戳的转换与运算">
+<meta property="og:url" content="https://windgirl0806.github.io/2020/04/10/##%20%E5%85%B3%E4%BA%8E%60Python%60%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="折荷有赠">
+<meta property="og:description" content="关于Python中时间戳的转换与运算1.简介在编写代码时，经常涉及到时间、日期、以及时间戳的相互转换 2.实例12#导入datetime模块,以及time模块import datetime,time 3.datetime类型的日期转换成时间戳12345678#获取当前时间 now &#x3D; datetime.datetime.now()#datetime类型的now 转换成UNIX时间时间戳(需要用到t">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-10T11:17:05.014Z">
+<meta property="article:modified_time" content="2020-04-10T11:17:07.126Z">
 <meta property="article:author" content="Prickly">
 <meta name="twitter:card" content="summary">
   
@@ -150,103 +154,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-## 关于`Python`中时间戳的转换与运算" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      ## 关于`Python`中时间戳的转换与运算
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/##%20%E5%85%B3%E4%BA%8E%60Python%60%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/" class="archive-article-date">
+
+        
+        <a href="/2020/04/10/##%20%E5%85%B3%E4%BA%8E%60Python%60%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/" class="archive-article-date">
   	<time datetime="2020-04-10T11:17:05.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/##%20%E5%85%B3%E4%BA%8E%60Python%60%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/">## 关于`Python`中时间戳的转换与运算</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于Python中时间戳的转换与运算"><a href="#关于Python中时间戳的转换与运算" class="headerlink" title="关于Python中时间戳的转换与运算"></a>关于<code>Python</code>中时间戳的转换与运算</h2><h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h4><p>在编写代码时，经常涉及到时间、日期、以及时间戳的相互转换</p>
+<h4 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入datetime模块,以及time模块</span></span><br><span class="line"><span class="keyword">import</span> datetime,time</span><br></pre></td></tr></table></figure>
+<h4 id="3-datetime类型的日期转换成时间戳"><a href="#3-datetime类型的日期转换成时间戳" class="headerlink" title="3.datetime类型的日期转换成时间戳"></a>3.datetime类型的日期转换成时间戳</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取当前时间 </span></span><br><span class="line">now = datetime.datetime.now()</span><br><span class="line"><span class="comment">#datetime类型的now 转换成UNIX时间时间戳(需要用到time模块)</span></span><br><span class="line">un_time = int(time.mktime(now.timetuple()))</span><br><span class="line"><span class="comment">#输出结果</span></span><br><span class="line">print(’当前时间戳:‘,un_time)</span><br><span class="line"><span class="comment">#单位为秒(s)</span></span><br><span class="line">输出结果: 当前时间戳: <span class="number">1579053971</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h4 id="4-时间戳转换成日期"><a href="#4-时间戳转换成日期" class="headerlink" title="4.时间戳转换成日期"></a>4.时间戳转换成日期</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#UNIX时间戳</span></span><br><span class="line">un_time = ’时间戳(<span class="number">1579053971</span>)‘</span><br><span class="line"><span class="comment">#讲UNIX时间戳转换成日期</span></span><br><span class="line">times = datetime.datetime.fromtimestamp(un_time)</span><br><span class="line"><span class="comment">#输出结果</span></span><br><span class="line">print(times)</span><br><span class="line"></span><br><span class="line">输出结果: 当前日期: <span class="number">2020</span><span class="number">-01</span><span class="number">-15</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">57</span>(不包含微秒)</span><br></pre></td></tr></table></figure>
 
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢官爷打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windgirl0806.github.io/2020/04/10/##%20%E5%85%B3%E4%BA%8E%60Python%60%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:04:17.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">个人简历</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/">个人简历</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-09T17:11:24.182Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -269,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
