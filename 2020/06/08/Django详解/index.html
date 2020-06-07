@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://windgirl0806.github.io">
   <title>Django详解 | 折荷有赠</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Django1.Django是什么？ Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)  Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式">
+  <meta name="description" content="Django1.Django是什么？ Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的) Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式MVC的优势:  低耦合  部署方便  开发快捷  可重用性高  维护成本低">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django详解">
 <meta property="og:url" content="https://windgirl0806.github.io/2020/06/08/Django%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="折荷有赠">
-<meta property="og:description" content="Django1.Django是什么？ Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)  Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式">
+<meta property="og:description" content="Django1.Django是什么？ Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的) Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式MVC的优势:  低耦合  部署方便  开发快捷  可重用性高  维护成本低">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://windgirl0806.github.io/2020/06/08/Django%E8%AF%A6%E8%A7%A3/Django%E8%AF%A6%E8%A7%A3.assets/1589776521-2356-JxrlTyMyPgYnQpOV.png">
 <meta property="og:image" content="https://windgirl0806.github.io/2020/06/08/Django%E8%AF%A6%E8%A7%A3/Django%E8%AF%A6%E8%A7%A3.assets/1589777036-2760-fs1oSv4dOWAwC5yW.png">
 <meta property="article:published_time" content="2020-06-07T17:57:39.913Z">
-<meta property="article:modified_time" content="2020-06-07T18:33:37.818Z">
+<meta property="article:modified_time" content="2020-06-07T18:40:26.919Z">
 <meta property="article:author" content="Prickly">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://windgirl0806.github.io/2020/06/08/Django%E8%AF%A6%E8%A7%A3/Django%E8%AF%A6%E8%A7%A3.assets/1589776521-2356-JxrlTyMyPgYnQpOV.png">
@@ -179,23 +179,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h5 id="1-Django是什么？"><a href="#1-Django是什么？" class="headerlink" title="1.Django是什么？"></a>1.Django是什么？</h5><ol>
-<li><p>Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)</p>
+        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h4 id="1-Django是什么？"><a href="#1-Django是什么？" class="headerlink" title="1.Django是什么？"></a>1.Django是什么？</h4><ol>
+<li><h5 id="Django是由Python开发的重量级Web框架。-我着手的项目大多也是基于Django开发的"><a href="#Django是由Python开发的重量级Web框架。-我着手的项目大多也是基于Django开发的" class="headerlink" title="Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)"></a>Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)</h5></li>
+<li><h5 id="Django本身基于MVC模式-也就是-Model-模型-VIew-视图-Controller-控制器-设计模式"><a href="#Django本身基于MVC模式-也就是-Model-模型-VIew-视图-Controller-控制器-设计模式" class="headerlink" title="Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式"></a>Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式</h5><p>MVC的优势:</p>
+<ul>
+<li><p>低耦合</p>
 </li>
-<li><p>Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式</p>
+<li><p>部署方便</p>
+</li>
+<li><p>开发快捷</p>
+</li>
+<li><p>可重用性高</p>
+</li>
+<li><p>维护成本低</p>
+</li>
+</ul>
+</li>
+</ol>
 <a id="more"></a>
-<p>MVC的优势:</p>
-<ol>
-<li>低耦合</li>
-<li>部署方便</li>
-<li>开发快捷</li>
-<li>可重用性高</li>
-<li>维护成本低</li>
-</ol>
-</li>
-</ol>
+
 <h5 id="耦合度是对模块-类-间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。-大概了解-预防同组成员对你进行物理迫害！！"><a href="#耦合度是对模块-类-间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。-大概了解-预防同组成员对你进行物理迫害！！" class="headerlink" title="耦合度是对模块(类)间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。(大概了解,预防同组成员对你进行物理迫害！！)"></a>耦合度是对模块(类)间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。(大概了解,预防同组成员对你进行物理迫害！！)</h5><p>   <strong>耦合度分类(由高到低)</strong></p>
-<pre><code>(1)内容耦合。当一个模块直接修改或操作另一个模块的数据,或者直接转入另一个模块时，就发生了内容耦合。此时，被修改的模块完全依赖于修改它的模块。类与类之间直接调用或继承关系都是属于这种耦合。</code></pre><p>   需完全避免内容耦合，重点在于不要在类内部直接操作另一个类的对象的数据成员，可以通过在操作类中增加一个函数接口向客户类提供服务来实现</p>
+<p>   (1)内容耦合。当一个模块直接修改或操作另一个模块的数据,或者直接转入另一个模块时，就发生了内容耦合。此时，被修改的模块完全依赖于修改它的模块。类与类之间直接调用或继承关系都是属于这种耦合，需完全避免内容耦合，重点在于不要在类内部直接操作另一个类的对象的数据成员，可以通过在操作类中增加一个函数接口向客户类提供服务来实现</p>
 <pre><code>(2)公共耦合。两个及两个以上的模块共同引用一个全局数据项就称为公共耦合。
 
 (3)控制耦合。一个模块在界面上传递一个信号（如开关值、标志量等）控制另一个模块，接收信号的模块的动作根据信号值进行调整，称为控制耦合。
@@ -214,7 +218,7 @@
 <p>​    视图(V): 图形界面,负责于用户的交互(页面)。</p>
 <p>​    控制器(C): 负责转发请求,对请求进行处理</p>
 <p>用户流程图:</p>
-<p><img src="Django%E8%AF%A6%E8%A7%A3.assets/1589776521-2356-JxrlTyMyPgYnQpOV.png" alt="1589776521-2356-JxrlTyMyPgYnQpOV"></p>
+<p><img src="Django%E8%AF%A6%E8%A7%A3.assets/1589776521-2356-JxrlTyMyPgYnQpOV.png" alt="用户流程"></p>
 <p>图片出处: <a href="https://www.runoob.com/" target="_blank" rel="noopener">https://www.runoob.com/</a></p>
 <p>MVC流程:</p>
 <p>1.用户由视图(View)触发事件</p>
