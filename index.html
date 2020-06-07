@@ -396,60 +396,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
         <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h5 id="1-Django是什么？"><a href="#1-Django是什么？" class="headerlink" title="1.Django是什么？"></a>1.Django是什么？</h5><ol>
 <li><p>Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)</p>
 </li>
 <li><p>Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式</p>
-<more>
-MVC的优势:
-
-<ol>
-<li>低耦合</li>
-<li>部署方便</li>
-<li>开发快捷</li>
-<li>可重用性高</li>
-<li>维护成本低</li>
-</ol>
-<h6 id="耦合度是对模块-类-间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。-大概了解-预防同组成员对你进行物理迫害！！"><a href="#耦合度是对模块-类-间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。-大概了解-预防同组成员对你进行物理迫害！！" class="headerlink" title="耦合度是对模块(类)间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。(大概了解,预防同组成员对你进行物理迫害！！)"></a>耦合度是对模块(类)间关联程度的度量，可以用”联系”作同义词，”独立性”作反义词。(大概了解,预防同组成员对你进行物理迫害！！)</h6><p><strong>耦合度分类(由高到低)</strong></p>
-<p>(1)内容耦合。当一个模块直接修改或操作另一个模块的数据,或者直接转入另一个模块时，就发生了内容耦合。此时，被修改的模块完全依赖于修改它的模块。类与类之间直接调用或继承关系都是属于这种耦合。</p>
-<p>需完全避免内容耦合，重点在于不要在类内部直接操作另一个类的对象的数据成员，可以通过在操作类中增加一个函数接口向客户类提供服务来实现</p>
-<p>(2)公共耦合。两个及两个以上的模块共同引用一个全局数据项就称为公共耦合。</p>
-<p>(3)控制耦合。一个模块在界面上传递一个信号（如开关值、标志量等）控制另一个模块，接收信号的模块的动作根据信号值进行调整，称为控制耦合。</p>
-<p>(4)标记耦合。模块间通过参数传递复杂的内部数据结构，称为标记耦合。此数据结构的变化将使相关的模块发生变化。</p>
-<p>(5)数据耦合。模块间通过参数传递基本类型的数据，称为数据耦合。</p>
-<p>(6)非直接耦合。模块间没有信息传递时，属于非直接耦合。</p>
-</li>
-</ol>
-<h5 id="2-Django的特点"><a href="#2-Django的特点" class="headerlink" title="2.Django的特点"></a>2.Django的特点</h5><ul>
-<li>强大的数据库功能</li>
-<li>自带强大的后台功能</li>
-</ul>
-<h5 id="3-MVC-和-MVT模型"><a href="#3-MVC-和-MVT模型" class="headerlink" title="3.MVC 和 MVT模型"></a>3.MVC 和 MVT模型</h5><p>MVC:</p>
-<p>上面已经对MVC作出了基本的了解.接下来就逐个分析:</p>
-<p>​    模型(M):编写程序应有的功能,负责业务对象与数据库的映射(ORM)。</p>
-<p>​    视图(V): 图形界面,负责于用户的交互(页面)。</p>
-<p>​    控制器(C): 负责转发请求,对请求进行处理</p>
-<p>用户流程图:</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5C1589776521-2356-JxrlTyMyPgYnQpOV.png" alt="1589776521-2356-JxrlTyMyPgYnQpOV"></p>
-<p>图片出处: <a href="https://www.runoob.com/" target="_blank" rel="noopener">https://www.runoob.com/</a></p>
-<p>MVC流程:</p>
-<p>1.用户由视图(View)触发事件</p>
-<p>2.控制器(Controller),转发请求到模型(Model)</p>
-<p>3.模型(Model)处理完请求,返回相应的数据到视图(View)</p>
-<p>4.视图(View)向用户展示返回数据</p>
-<p>MTV:</p>
-<h6 id="MTV-模式本质上和-MVC-是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django-的-MTV-分别是指"><a href="#MTV-模式本质上和-MVC-是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django-的-MTV-分别是指" class="headerlink" title="MTV 模式本质上和 MVC 是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django 的 MTV 分别是指"></a>MTV 模式本质上和 MVC 是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django 的 MTV 分别是指</h6><p>​    模型(M):编写程序应有的功能，负责业务对象和数据库的映射(ORM)</p>
-<p>​    模板(T):负责如何把页面(html)展示给用户</p>
-<p>​    视图(V):负责业务逻辑,并在适当的时候调用Model和Template</p>
-<h6 id="除了以上三层之外，还需要一个-URL-分发器，它的作用是将一个个-URL-的页面请求分发给不同的-View-处理，View-再调用相应的-Model-和-Template，MTV-的响应模式如下所示："><a href="#除了以上三层之外，还需要一个-URL-分发器，它的作用是将一个个-URL-的页面请求分发给不同的-View-处理，View-再调用相应的-Model-和-Template，MTV-的响应模式如下所示：" class="headerlink" title="除了以上三层之外，还需要一个 URL 分发器，它的作用是将一个个 URL 的页面请求分发给不同的 View 处理，View 再调用相应的 Model 和 Template，MTV 的响应模式如下所示："></a>除了以上三层之外，还需要一个 URL 分发器，它的作用是将一个个 URL 的页面请求分发给不同的 View 处理，View 再调用相应的 Model 和 Template，MTV 的响应模式如下所示：</h6><p>用户流程图：</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5C1589777036-2760-fs1oSv4dOWAwC5yW.png" alt="1589777036-2760-fs1oSv4dOWAwC5yW"></p>
-<p>MTV流程:</p>
-<p>1.用户通过url控制器向url匹配的视图函数发起请求</p>
-<p>2.此时有两种情况:</p>
-<p>​    2.1 : 如果不涉及到数据调用,视图(view)直接返回模板(template),也就是网页.</p>
-<p>​    2.2: 如果涉及到数据调用,视图(View)向模型(Model)拿取数据,然后逐级返回。（拿取到数据的视图(View)填充到模板(Template),形成最终的页面(html)）</p>
-
+        
+          <a class="article-more-a" href="/2020/06/08/Django%E8%AF%A6%E8%A7%A3/#more">more >></a>
+        
       
 
       
