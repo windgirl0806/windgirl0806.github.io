@@ -153,6 +153,218 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-垃圾回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/08/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/08/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2020-06-08T13:21:10.450Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+        <h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><h5 id="1-垃圾回收机制总体围绕一句话"><a href="#1-垃圾回收机制总体围绕一句话" class="headerlink" title="1.垃圾回收机制总体围绕一句话:"></a>1.垃圾回收机制总体围绕一句话:</h5><ul>
+<li>引用计数器为主,分代回收,标记清除为辅,外加一个缓存机制（优化）</li>
+</ul>
+<h5 id="2-引用计数器"><a href="#2-引用计数器" class="headerlink" title="2. 引用计数器:"></a>2. 引用计数器:</h5><ul>
+<li>当一个对象被创建就被保存到一个环形的数据链表(refchian)当中,每个对象都有一个引用计数器ob_refnc每次使用调用，技术器就加一,删除就减一,当为0的时候就销毁对象</li>
+</ul>
+<h5 id="3-分代回收-标记清除"><a href="#3-分代回收-标记清除" class="headerlink" title="3.分代回收,标记清除:"></a>3.分代回收,标记清除:</h5><ul>
+<li>为了解决对象有多个元素组成的办法，提出了分代回收,标记清除，python维护了四个链表,refchuan，0，1，2，可以理解为老年代,中年代,青年代,防止循环引用的问题</li>
+<li>当源码内部达到阈值,就会触发扫描标记清除</li>
+</ul>
+<h5 id="缓存机制-了解"><a href="#缓存机制-了解" class="headerlink" title="缓存机制(了解):"></a>缓存机制(了解):</h5><ul>
+<li>池</li>
+<li>free_list</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/08/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Pytohn中的进程,线程,协程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/">Pytohn中的进程,线程,协程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-06-08T13:21:10.351Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Pytohn中的进程-线程-协程"><a href="#Pytohn中的进程-线程-协程" class="headerlink" title="Pytohn中的进程,线程,协程"></a>Pytohn中的进程,线程,协程</h1><h5 id="1-进程-Process-系统分配资源的单位"><a href="#1-进程-Process-系统分配资源的单位" class="headerlink" title="1. 进程(Process): 系统分配资源的单位"></a>1. 进程(Process): 系统分配资源的单位</h5><ul>
+<li><h5 id="进程的特点："><a href="#进程的特点：" class="headerlink" title="进程的特点："></a>进程的特点：</h5><ul>
+<li>占用资源大</li>
+<li>效率很低</li>
+<li>稳定性强
+        
+          <a class="article-more-a" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-GIL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/08/GIL/">GIL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/08/GIL/" class="archive-article-date">
+  	<time datetime="2020-06-08T13:21:10.221Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+        <h1 id="GIL"><a href="#GIL" class="headerlink" title="GIL"></a>GIL</h1><h4 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL(全局解释器锁)"></a>GIL(全局解释器锁)</h4><h5 id="1-什么是-GIL-呢？"><a href="#1-什么是-GIL-呢？" class="headerlink" title="1.什么是 GIL 呢？"></a>1.什么是 GIL 呢？</h5><p>GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。</p>
+<h5 id="2-GIL-的功能是"><a href="#2-GIL-的功能是" class="headerlink" title="2.GIL 的功能是?"></a>2.GIL 的功能是?</h5><p>在 CPython 解释器中执行的每一个 Python 线程，都会先锁住自己，以阻止别的线程执行。</p>
+<p>当然，CPython 不可能容忍一个线程一直独占解释器，它会轮流执行 Python 线程。这样一来，用户看到的就是“伪”并行，即 Python 线程在交替执行，来模拟真正并行的线程。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/08/GIL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
