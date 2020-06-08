@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://windgirl0806.github.io">
   <title>GIL | 折荷有赠</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GILGIL(全局解释器锁)1.什么是 GIL 呢？GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。 2.GIL 的功能是?在 CPython 解释器中执行的每一个 Python 线程，都会先锁住自己，以阻止别的线程执行。 当然，CPython 不可能容忍一个线程一直独占解释器，它会轮流执行 Pytho">
+  <meta name="description" content="GILGIL(全局解释器锁)1.什么是 GIL 呢？GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GIL">
 <meta property="og:url" content="https://windgirl0806.github.io/2020/06/08/GIL/index.html">
 <meta property="og:site_name" content="折荷有赠">
-<meta property="og:description" content="GILGIL(全局解释器锁)1.什么是 GIL 呢？GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。 2.GIL 的功能是?在 CPython 解释器中执行的每一个 Python 线程，都会先锁住自己，以阻止别的线程执行。 当然，CPython 不可能容忍一个线程一直独占解释器，它会轮流执行 Pytho">
+<meta property="og:description" content="GILGIL(全局解释器锁)1.什么是 GIL 呢？GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-08T13:21:10.221Z">
-<meta property="article:modified_time" content="2020-06-08T13:21:10.225Z">
+<meta property="article:modified_time" content="2020-06-08T13:39:24.588Z">
 <meta property="article:author" content="Prickly">
 <meta name="twitter:card" content="summary">
   
@@ -177,6 +177,7 @@
       
         <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
         <h1 id="GIL"><a href="#GIL" class="headerlink" title="GIL"></a>GIL</h1><h4 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL(全局解释器锁)"></a>GIL(全局解释器锁)</h4><h5 id="1-什么是-GIL-呢？"><a href="#1-什么是-GIL-呢？" class="headerlink" title="1.什么是 GIL 呢？"></a>1.什么是 GIL 呢？</h5><p>GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。</p>
+<a id="more"></a>
 <h5 id="2-GIL-的功能是"><a href="#2-GIL-的功能是" class="headerlink" title="2.GIL 的功能是?"></a>2.GIL 的功能是?</h5><p>在 CPython 解释器中执行的每一个 Python 线程，都会先锁住自己，以阻止别的线程执行。</p>
 <p>当然，CPython 不可能容忍一个线程一直独占解释器，它会轮流执行 Python 线程。这样一来，用户看到的就是“伪”并行，即 Python 线程在交替执行，来模拟真正并行的线程。</p>
 
