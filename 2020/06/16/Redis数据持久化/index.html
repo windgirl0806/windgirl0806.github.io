@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://windgirl0806.github.io">
-  <title>折荷有赠</title>
+  <title>Redis数据持久化 | 折荷有赠</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="折荷有赠">
-<meta property="og:url" content="https://windgirl0806.github.io/page/2/index.html">
+  <meta name="description" content="Redis数据持久化1.数据持久化的两种方式: RDB（快照）:  指定的时间间隔内保存数据快照 AOF: 先把命令追加到操作日志的尾部，保存所有的历史操作  2.RDB 实现 Redis数据持久化（默认方式） 2.1 编辑 redis.conf  Tips：使用whereis redis命令查看redis安装在哪个位置，然后进入redis安装目录的etc目录下，编辑redis.conf。  2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis数据持久化">
+<meta property="og:url" content="https://windgirl0806.github.io/2020/06/16/Redis%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/index.html">
 <meta property="og:site_name" content="折荷有赠">
+<meta property="og:description" content="Redis数据持久化1.数据持久化的两种方式: RDB（快照）:  指定的时间间隔内保存数据快照 AOF: 先把命令追加到操作日志的尾部，保存所有的历史操作  2.RDB 实现 Redis数据持久化（默认方式） 2.1 编辑 redis.conf  Tips：使用whereis redis命令查看redis安装在哪个位置，然后进入redis安装目录的etc目录下，编辑redis.conf。  2.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-15T16:56:28.954Z">
+<meta property="article:modified_time" content="2020-06-15T16:56:28.955Z">
 <meta property="article:author" content="Prickly">
 <meta name="twitter:card" content="summary">
   
@@ -151,159 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Pytohn中的进程,线程,协程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Redis数据持久化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/">Pytohn中的进程,线程,协程</a>
+    <h1 class="article-title" itemprop="name">
+      Redis数据持久化
     </h1>
   
 
         
-        <a href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-06-08T13:21:10.351Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Pytohn中的进程-线程-协程"><a href="#Pytohn中的进程-线程-协程" class="headerlink" title="Pytohn中的进程,线程,协程"></a>Pytohn中的进程,线程,协程</h1><h5 id="1-进程-Process-系统分配资源的单位"><a href="#1-进程-Process-系统分配资源的单位" class="headerlink" title="1. 进程(Process): 系统分配资源的单位"></a>1. 进程(Process): 系统分配资源的单位</h5><ul>
-<li><h5 id="进程的特点："><a href="#进程的特点：" class="headerlink" title="进程的特点："></a>进程的特点：</h5><ul>
-<li>占用资源大</li>
-<li>效率很低</li>
-<li>稳定性强</li>
-</ul>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/Pytohn%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B,%E7%BA%BF%E7%A8%8B,%E5%8D%8F%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GIL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/GIL/">GIL</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/08/GIL/" class="archive-article-date">
-  	<time datetime="2020-06-08T13:21:10.221Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="GIL"><a href="#GIL" class="headerlink" title="GIL"></a>GIL</h1><h4 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL(全局解释器锁)"></a>GIL(全局解释器锁)</h4><h5 id="1-什么是-GIL-呢？"><a href="#1-什么是-GIL-呢？" class="headerlink" title="1.什么是 GIL 呢？"></a>1.什么是 GIL 呢？</h5><p>GIL 是最流程的 CPython 解释器（平常称为 Python）中的一个技术术语，中文译为全局解释器锁，其本质上类似操作系统的 Mutex。</p>
-        
-          <a class="article-more-a" href="/2020/06/08/GIL/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/GIL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/Mongodb/">Mongodb</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/08/Mongodb/" class="archive-article-date">
-  	<time datetime="2020-06-07T17:57:57.904Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+        <a href="/2020/06/16/Redis%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-06-15T16:56:28.954Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
 </a>
         
       </header>
@@ -311,222 +176,100 @@
     <div class="article-entry" itemprop="articleBody">
       
         <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Mongodb"><a href="#Mongodb" class="headerlink" title="Mongodb"></a>Mongodb</h1><p>1.Mongodb</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/Mongodb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/Redis/">Redis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/08/Redis/" class="archive-article-date">
-  	<time datetime="2020-06-07T17:57:52.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h3 id="1-Redis"><a href="#1-Redis" class="headerlink" title="1. Redis:"></a>1. Redis:</h3><h4 id="1-Redis是完全开源免费的-遵守BSD协议，是一个高性能的key-value数据库"><a href="#1-Redis是完全开源免费的-遵守BSD协议，是一个高性能的key-value数据库" class="headerlink" title="1. Redis是完全开源免费的,遵守BSD协议，是一个高性能的key-value数据库."></a>1. Redis是完全开源免费的,遵守BSD协议，是一个高性能的key-value数据库.</h4><h4 id="2-Redis等其他key-value缓存产品有以下三个特点"><a href="#2-Redis等其他key-value缓存产品有以下三个特点" class="headerlink" title="2. Redis等其他key-value缓存产品有以下三个特点:"></a>2. Redis等其他key-value缓存产品有以下三个特点:</h4><ul>
-<li><h5 id="2-1-redis支持数据的持久化-可以将内存中的数据保存在磁盘中-重启的时候可以再此加载使用。"><a href="#2-1-redis支持数据的持久化-可以将内存中的数据保存在磁盘中-重启的时候可以再此加载使用。" class="headerlink" title="2.1 redis支持数据的持久化,可以将内存中的数据保存在磁盘中,重启的时候可以再此加载使用。"></a>2.1 redis支持数据的持久化,可以将内存中的数据保存在磁盘中,重启的时候可以再此加载使用。</h5></li>
-<li><h5 id="2-2-redis-不光支持key-value形式的数据-也支持List-列表-Set-集合-zset-有序集合-hash-哈希-等数据结构。"><a href="#2-2-redis-不光支持key-value形式的数据-也支持List-列表-Set-集合-zset-有序集合-hash-哈希-等数据结构。" class="headerlink" title="2.2 redis 不光支持key-value形式的数据,也支持List(列表), Set(集合),  zset(有序集合),hash(哈希)等数据结构。"></a>2.2 redis 不光支持key-value形式的数据,也支持List(列表), Set(集合),  zset(有序集合),hash(哈希)等数据结构。</h5></li>
-<li><h5 id="2-3-redis支持数据的备份，即master-slave模式的数据备份。"><a href="#2-3-redis支持数据的备份，即master-slave模式的数据备份。" class="headerlink" title="2.3 redis支持数据的备份，即master-slave模式的数据备份。"></a>2.3 redis支持数据的备份，即master-slave模式的数据备份。</h5></li>
+        <h1 id="Redis数据持久化"><a href="#Redis数据持久化" class="headerlink" title="Redis数据持久化"></a>Redis数据持久化</h1><h5 id="1-数据持久化的两种方式"><a href="#1-数据持久化的两种方式" class="headerlink" title="1.数据持久化的两种方式:"></a>1.数据持久化的两种方式:</h5><ul>
+<li><h5 id="RDB（快照）-指定的时间间隔内保存数据快照"><a href="#RDB（快照）-指定的时间间隔内保存数据快照" class="headerlink" title="RDB（快照）:  指定的时间间隔内保存数据快照"></a>RDB（快照）:  指定的时间间隔内保存数据快照</h5></li>
+<li><h5 id="AOF-先把命令追加到操作日志的尾部，保存所有的历史操作"><a href="#AOF-先把命令追加到操作日志的尾部，保存所有的历史操作" class="headerlink" title="AOF: 先把命令追加到操作日志的尾部，保存所有的历史操作"></a>AOF: 先把命令追加到操作日志的尾部，保存所有的历史操作</h5></li>
 </ul>
-        
-          <a class="article-more-a" href="/2020/06/08/Redis/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/Redis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/Mysql/">Mysql</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/08/Mysql/" class="archive-article-date">
-  	<time datetime="2020-06-07T17:57:49.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><h4 id="前言-在说Mysql之前我们首先要了解一下数据库-也就是Database"><a href="#前言-在说Mysql之前我们首先要了解一下数据库-也就是Database" class="headerlink" title="前言:在说Mysql之前我们首先要了解一下数据库,也就是Database."></a>前言:在说Mysql之前我们首先要了解一下数据库,也就是Database.</h4><h4 id="1-什么是数据库"><a href="#1-什么是数据库" class="headerlink" title="1.什么是数据库?"></a>1.什么是数据库?</h4><ul>
-<li><h5 id="1-1-数据库-Database-是按照数据结构来组织，存储和管理数据的仓库"><a href="#1-1-数据库-Database-是按照数据结构来组织，存储和管理数据的仓库" class="headerlink" title="1.1 数据库(Database)是按照数据结构来组织，存储和管理数据的仓库"></a>1.1 数据库(Database)是按照数据结构来组织，存储和管理数据的仓库</h5></li>
-<li><h5 id="1-2-每个数据库都有一个或多个API用于创建，访问，管理，搜索，复制所保存的数据"><a href="#1-2-每个数据库都有一个或多个API用于创建，访问，管理，搜索，复制所保存的数据" class="headerlink" title="1.2 每个数据库都有一个或多个API用于创建，访问，管理，搜索，复制所保存的数据."></a>1.2 每个数据库都有一个或多个API用于创建，访问，管理，搜索，复制所保存的数据.</h5></li>
-<li><h5 id="1-3-我们通常用关系型数据库来存储和管理大数据量-所谓关系型数据库也就是建立在关系模型基础上的数据库-借助于集合代数等数学概念和方法来处理数据库中的数据"><a href="#1-3-我们通常用关系型数据库来存储和管理大数据量-所谓关系型数据库也就是建立在关系模型基础上的数据库-借助于集合代数等数学概念和方法来处理数据库中的数据" class="headerlink" title="1.3 我们通常用关系型数据库来存储和管理大数据量,所谓关系型数据库也就是建立在关系模型基础上的数据库,借助于集合代数等数学概念和方法来处理数据库中的数据"></a>1.3 我们通常用关系型数据库来存储和管理大数据量,所谓关系型数据库也就是建立在关系模型基础上的数据库,借助于集合代数等数学概念和方法来处理数据库中的数据</h5></li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/06/08/Mysql/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/Mysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/08/Django%E8%AF%A6%E8%A7%A3/">Django详解</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/08/Django%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-06-07T17:57:39.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h2 id="1-Django是什么？"><a href="#1-Django是什么？" class="headerlink" title="1.Django是什么？"></a>1.Django是什么？</h2><h4 id="1-Django是由Python开发的重量级Web框架。-我着手的项目大多也是基于Django开发的"><a href="#1-Django是由Python开发的重量级Web框架。-我着手的项目大多也是基于Django开发的" class="headerlink" title="1.Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)"></a>1.Django是由Python开发的重量级Web框架。(我着手的项目大多也是基于Django开发的)</h4><h4 id="2-Django本身基于MVC模式-也就是-Model-模型-VIew-视图-Controller-控制器-设计模式"><a href="#2-Django本身基于MVC模式-也就是-Model-模型-VIew-视图-Controller-控制器-设计模式" class="headerlink" title="2.Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式"></a>2.Django本身基于MVC模式,也就是 Model(模型) VIew(视图) Controller(控制器) 设计模式</h4><ol>
-<li><h4 id="MVC的优势"><a href="#MVC的优势" class="headerlink" title="MVC的优势:"></a>MVC的优势:</h4><ul>
-<li><h5 id="低耦合"><a href="#低耦合" class="headerlink" title="低耦合"></a>低耦合</h5></li>
-<li><h5 id="部署方便"><a href="#部署方便" class="headerlink" title="部署方便"></a>部署方便</h5></li>
-<li><h5 id="开发快捷"><a href="#开发快捷" class="headerlink" title="开发快捷"></a>开发快捷</h5></li>
-<li><h5 id="可重用性高"><a href="#可重用性高" class="headerlink" title="可重用性高"></a>可重用性高</h5></li>
-<li><h5 id="维护成本低"><a href="#维护成本低" class="headerlink" title="维护成本低"></a>维护成本低</h5></li>
+<h5 id="2-RDB-实现-Redis数据持久化（默认方式）"><a href="#2-RDB-实现-Redis数据持久化（默认方式）" class="headerlink" title="2.RDB 实现 Redis数据持久化（默认方式）"></a>2.RDB 实现 Redis数据持久化（默认方式）</h5><ul>
+<li><p>2.1 编辑 <strong>redis.conf</strong></p>
+</li>
+<li><p>Tips：使用whereis redis命令查看redis安装在哪个位置，然后进入redis安装目录的etc目录下，编辑redis.conf。</p>
+</li>
+<li><p>2.2 默认备份时间间隔</p>
+</li>
+<li><p>2.3 默认备份文件名称</p>
+</li>
+<li><p>2.4 默认备份RDB文件位置</p>
+</li>
+<li><p>2.5 cd  /usr/local/redis/var 进入redis的文件位置</p>
+</li>
+<li><p>Tips ：可主动触发保存redis数据快照</p>
+</li>
+<li><p>RDB的缺点：</p>
+<ul>
+<li><p>因为是特定条件下进行一次持久化（每隔一段时间），就可能会导致一旦redis崩溃，再次回复时，可能会导致部分数据丢失。</p>
+<p>Tips ：如果设置的备份时间间隔较短，比较耗服务器性能，如果设置的备份时间间隔较长，又可能会导致数据恢复时部分数据丢失。</p>
+</li>
 </ul>
 </li>
+</ul>
+<h5 id="3-AOF持久化方案"><a href="#3-AOF持久化方案" class="headerlink" title="3.AOF持久化方案"></a>3.AOF持久化方案</h5><h5 id="1-相比于RDB持久化方案的优点："><a href="#1-相比于RDB持久化方案的优点：" class="headerlink" title="1. 相比于RDB持久化方案的优点："></a>1. 相比于RDB持久化方案的优点：</h5><ul>
+<li>数据非常完整，故障恢复丢失数据少</li>
+<li>可对历史操作进行处理</li>
+</ul>
+<h5 id="2-AOF如何启动："><a href="#2-AOF如何启动：" class="headerlink" title="2.AOF如何启动："></a>2.AOF如何启动：</h5><ul>
+<li><ol>
+<li>将redis.conf 配置文件中的appendonly 参数改为yes 后，则redis开始启动AOF数据持久化模式</li>
 </ol>
-        
-          <a class="article-more-a" href="/2020/06/08/Django%E8%AF%A6%E8%A7%A3/#more">more >></a>
-        
+</li>
+<li><ol start="2">
+<li>设置AOF同步的方式，设置的默认为每秒同步一次</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>开启AOF同步模式后，会自动备份启动后执行的命令</li>
+</ol>
+</li>
+<li>AOF缺点：<ul>
+<li>因为AOF模式要把每一步redis命令都记录下来，所以就导致文件的体积会很大</li>
+<li>而且会导致速度低于RDB，并且恢复速度慢</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li>在实际应用中，根据场景不同，选择的方式也不尽相同，各有优缺点。</li>
+<li>但我个人看法，RDB的快照方式相比于AOF的逐步记录模式要好一些。</li>
+<li>至于RDB丢数据的风险，我们完全可以通过控制备份的时间间隔来避免这个问题。</li>
+<li>当然，也是可以两种方式同时使用的，只是大多不会这么做。<ul>
+<li>Tips: 参考自 : <a href="https://blog.csdn.net/m_nanle_xiaobudiu/article/details/81001504" target="_blank" rel="noopener">https://blog.csdn.net/m_nanle_xiaobudiu/article/details/81001504</a></li>
+</ul>
+</li>
+</ul>
+
       
 
+      
+        
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢官爷打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/imgs/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/imgs/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -535,16 +278,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/08/Django%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windgirl0806.github.io/2020/06/16/Redis%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/06/16/Redis%E6%95%B0%E6%8D%AE%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Redis数据淘汰策略
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/16/Redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis的主从同步如何实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -564,159 +375,14 @@
 
 
 
-
-  
-    <article id="post-Python中时间戳的转换与运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/Python%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/">Python中时间戳的转换与运算</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/Python%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-04-10T11:17:05.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于Python中时间戳的转换与运算"><a href="#关于Python中时间戳的转换与运算" class="headerlink" title="关于Python中时间戳的转换与运算"></a>关于<code>Python</code>中时间戳的转换与运算</h2><h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h4><p>在编写代码时，有时涉及到时间、日期、以及时间戳的相互转换</p>
-<h4 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入datetime模块,以及time模块</span></span><br><span class="line"><span class="keyword">import</span> datetime,time</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/04/10/Python%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/Python%E4%B8%AD%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人简历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/">个人简历</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:04:17.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h4><p>手机：18813120951</p>
-<p>Email：<a href="mailto:yarnfog@126.com">yarnfog@126.com</a></p>
-<p>QQ/微信号：Ryh18813120951</p>
-<summary>展开查看</summary>
-
-<h4 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h4>
-        
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -739,8 +405,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
