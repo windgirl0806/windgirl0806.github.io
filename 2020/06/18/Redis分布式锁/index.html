@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://windgirl0806.github.io">
-  <title>折荷有赠</title>
+  <title>Redis分布式锁 | 折荷有赠</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="折荷有赠">
-<meta property="og:url" content="https://windgirl0806.github.io/index.html">
+  <meta name="description" content="Redis分布式锁1.分布式就是将一件事情分为多个节点 效率更高，但是容易出错，像是哪一个节点出错了，接下来的操作也是在错误的结果继续执行  2.分布式锁就是解决了这种问题 他给每个节点加上一个锁，让这个节点执行的时候，别的节点无法对这个节点进行其他操作，只能等锁释放 并且为了防止死锁还要给锁加上过期时间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis分布式锁">
+<meta property="og:url" content="https://windgirl0806.github.io/2020/06/18/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/index.html">
 <meta property="og:site_name" content="折荷有赠">
+<meta property="og:description" content="Redis分布式锁1.分布式就是将一件事情分为多个节点 效率更高，但是容易出错，像是哪一个节点出错了，接下来的操作也是在错误的结果继续执行  2.分布式锁就是解决了这种问题 他给每个节点加上一个锁，让这个节点执行的时候，别的节点无法对这个节点进行其他操作，只能等锁释放 并且为了防止死锁还要给锁加上过期时间">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-18T00:27:13.350Z">
+<meta property="article:modified_time" content="2020-06-18T00:27:13.381Z">
 <meta property="article:author" content="Prickly">
 <meta name="twitter:card" content="summary">
   
@@ -151,576 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-如何提高系统并发量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Redis分布式锁" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E9%87%8F/">如何提高系统并发量</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:39.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="如何提高系统并发量"><a href="#如何提高系统并发量" class="headerlink" title="如何提高系统并发量"></a>如何提高系统并发量</h1><h5 id="1-通过水平扩展和垂直扩展来提高服务器的处理量"><a href="#1-通过水平扩展和垂直扩展来提高服务器的处理量" class="headerlink" title="1. 通过水平扩展和垂直扩展来提高服务器的处理量"></a>1. 通过水平扩展和垂直扩展来提高服务器的处理量</h5><ul>
-<li>水平扩展：只要增加服务器数量，就能线性扩充系统性能。</li>
-</ul>
-<ul>
-<li>垂直扩展：提升单机处理能力。垂直扩展的方式又有两种：<ul>
-<li>增强单机硬件性能，例如:增加CPU核数，升级更好的网卡，升级更好的硬盘，扩充硬盘容量，扩充系统内存</li>
-<li>提升单机架构性能，例如：使用Cache来减少IO次数，使用异步来增加单服务吞吐量，使用无锁数据结构来减少响应时间；</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-如何配置来提高并发量"><a href="#2-如何配置来提高并发量" class="headerlink" title="2. 如何配置来提高并发量"></a>2. 如何配置来提高并发量</h5><ul>
-<li>nginx+uwsgi+django来部署，提高单台django的处理量</li>
-<li>nginx负载均衡提高系统的处理量</li>
-<li>mysql读写分离</li>
-<li>redis缓存使用，redis读写分离</li>
-<li>页面静态化</li>
-</ul>
-<h5 id="3-如何提高系统的可用性"><a href="#3-如何提高系统的可用性" class="headerlink" title="3. 如何提高系统的可用性"></a>3. 如何提高系统的可用性</h5><ul>
-<li>redis主从和集群</li>
-<li>keeplived+nginx</li>
-<li>mysql主从</li>
-<li>多服务器部署</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%8F%91%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-QPS如何计算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/QPS%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97/">QPS如何计算</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/QPS%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:34.861Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="QPS如何计算"><a href="#QPS如何计算" class="headerlink" title="QPS如何计算"></a>QPS如何计算</h1><h5 id="1-计算QPS需要了解的东西"><a href="#1-计算QPS需要了解的东西" class="headerlink" title="1.计算QPS需要了解的东西"></a>1.计算QPS需要了解的东西</h5><ul>
-<li><p>PV(访问量)：即Page View, 具体是指网站的是页面浏览bai量或者点du击量，页面被刷新一次就计算一次。</p>
-</li>
-<li><p>DAU (日活跃用户数量)</p>
-</li>
-<li><p>QPS 峰值时间每秒请求数</p>
-</li>
-<li><p>公式:( 总PV数 * 80% ) / ( 每天秒数 * 20% ) = 峰值时间每秒请求数(<em>QPS</em>) </p>
-</li>
-</ul>
-<h5 id="2-如何计算服务器能承受多大的访问量"><a href="#2-如何计算服务器能承受多大的访问量" class="headerlink" title="2.如何计算服务器能承受多大的访问量"></a>2.如何计算服务器能承受多大的访问量</h5><ul>
-<li>并发数：(线程 * 进程)</li>
-</ul>
-<ul>
-<li>QPS:   QPS = 总访问量 * 0.8  /  每天的秒数 * 0.2</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/QPS%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nginx做负载均衡时的五种策略以及配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/nginx%E5%81%9A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%97%B6%E7%9A%84%E4%BA%94%E7%A7%8D%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/">nginx做负载均衡时的五种策略以及配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/nginx%E5%81%9A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%97%B6%E7%9A%84%E4%BA%94%E7%A7%8D%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:28.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="nginx做负载均衡时的五种策略"><a href="#nginx做负载均衡时的五种策略" class="headerlink" title="nginx做负载均衡时的五种策略"></a>nginx做负载均衡时的五种策略</h1><h5 id="1-nginx做负载均衡时的五种策略"><a href="#1-nginx做负载均衡时的五种策略" class="headerlink" title="1.nginx做负载均衡时的五种策略"></a>1.<strong>nginx</strong>做负载均衡时的五种策略</h5><ul>
-<li><p>1、轮询 (默认)</p>
-<ul>
-<li>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</li>
-</ul>
-</li>
-<li><p>2、权重</p>
-<ul>
-<li>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</li>
-</ul>
-</li>
-<li><p>3、ip_hash</p>
-<ul>
-<li>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。 </li>
-</ul>
-</li>
-<li><p>4、最短响应时间（fair）</p>
-<ul>
-<li>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</li>
-</ul>
-</li>
-<li><p>5、url_hash</p>
-<ul>
-<li>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 </li>
-</ul>
-</li>
-</ul>
-<p><strong>2. 如何配置</strong></p>
-<ul>
-<li><p>1、upstream</p>
-<ul>
-<li>在http节点下，添加upstream节点</li>
-</ul>
-</li>
-<li><p>2、server里的loaction</p>
-<ul>
-<li>将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称</li>
-</ul>
-</li>
-<li><p>负载均衡初步完成了。upstream按照轮询（默认）方式进行负载，每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</p>
-</li>
-<li><p>上面是可以自行设置的五种方式</p>
-</li>
-<li><p>Keepalived 自行了解 <a href="https://www.cnblogs.com/ng-xixi/p/9925582.html" target="_blank" rel="noopener">https://www.cnblogs.com/ng-xixi/p/9925582.html</a></p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/nginx%E5%81%9A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%97%B6%E7%9A%84%E4%BA%94%E7%A7%8D%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Nginx正反向代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/Nginx%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">Nginx正反向代理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/Nginx%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:23.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h5 id="1-代理的概念"><a href="#1-代理的概念" class="headerlink" title="1.代理的概念"></a>1.代理的概念</h5><ul>
-<li>实践中客户端无法直接跟服务端发起请求的时候，我们就需要代理服务。代理可以实现客户端与服务端之间的通信,我们的Nginx也可以实现相应的代理服务。</li>
-<li>代理分为正向代理和反向代理,此文就来演示一下Nginx正向代理和反向代理的场景。</li>
-</ul>
-<h5 id="2-正向代理"><a href="#2-正向代理" class="headerlink" title="2.正向代理"></a>2.正向代理</h5><ul>
-<li>举个例子</li>
-<li>A(租房子的人 /客户端)   B（代理）  C（房东/服务端）</li>
-<li>A也就是 (租房子的人) 想向C (房东) 租房子不过他没有直接联系房东的方式，不过B这个人有联系房东的方式，我们就可以通过B来租到房子</li>
-<li>这个过程中C都不知道A，只认识B</li>
-<li>C不知道房子租给了A，而是认为租给了B</li>
-</ul>
-<h5 id="3-反向代理"><a href="#3-反向代理" class="headerlink" title="3.反向代理"></a>3.反向代理</h5><ul>
-<li>再用租房子举个例子</li>
-<li>A(租房子的人 /客户端)   B（代理）  C（房东/服务端）</li>
-<li>A要租房子，B直接把房子租给了A</li>
-<li>A这时候都不知道房东是C呢</li>
-<li>或者以为房东就是B</li>
-</ul>
-<h5 id="4-总结："><a href="#4-总结：" class="headerlink" title="4.总结："></a>4.总结：</h5><ul>
-<li>由上的例子和图我们可以知道正向代理和反向代理的区别在于代理的对象不一样,正向代理的代理对象是客户端,反向代理的代理对象是服务端。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/Nginx%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/Redis%E4%BA%8B%E5%8A%A1/">Redis事务</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/Redis%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:18.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h1><h5 id="1-redis的事务是什么？"><a href="#1-redis的事务是什么？" class="headerlink" title="1.redis的事务是什么？"></a>1.redis的事务是什么？</h5><ul>
-<li>redis的事务本质上就是命令的集合，事务支持多个命令执行，一个事务的命令都会被序列化，串行化并且按顺序执行，其他客户端提交的命令请求不会插入到事务执行命令序列中。</li>
-<li>总结说就是 redis事务是一次性，顺序性，排他性的执行一个队列中的命令</li>
-</ul>
-<h5 id="2-redis事务的特点"><a href="#2-redis事务的特点" class="headerlink" title="2.redis事务的特点"></a>2.redis事务的特点</h5><ul>
-<li><p>redis事务没有隔离性的概念</p>
-<ul>
-<li>因为他在加入到命令队列中时，并没有被执行</li>
-</ul>
-</li>
-<li><p>redis事务不保证原子性</p>
-<ul>
-<li>也就是没有回滚，命令失败则会执行下一个命令</li>
-</ul>
-</li>
-</ul>
-<p><strong>3.Redis事务的三个阶段：</strong></p>
-<ul>
-<li>开始事务</li>
-<li>命令入队</li>
-<li>执行事务</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/Redis%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Nginx + Uwsgi部署Django项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/Nginx%20+%20Uwsgi%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE/">Nginx + Uwsgi部署Django项目</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/Nginx%20+%20Uwsgi%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:18.348Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Nginx-uWsgi部署Django项目"><a href="#Nginx-uWsgi部署Django项目" class="headerlink" title="Nginx + uWsgi部署Django项目"></a>Nginx + uWsgi部署Django项目</h1><h5 id="1-部署步骤"><a href="#1-部署步骤" class="headerlink" title="1.部署步骤"></a>1.部署步骤</h5><ul>
-<li><p>安装nginx</p>
-</li>
-<li><p>Nginx安装完成之后安装uWsgi</p>
-</li>
-<li><p>以上两项安装完成之后，现在开始配置uwsgi， 进入项目的根目录，注意：项目不要放在root目录下</p>
-</li>
-<li><p>测试项目是否可以被uwsgi启动，启动成功之后</p>
-</li>
-<li><p>进入项目跟目录之后，在同级目录创建一个空的文件夹</p>
-</li>
-<li><p>创建完成之后,在目录中创建uwsgi.ini文件</p>
-</li>
-<li><p>创建ini文件完成之后，将一下内容放进文件夹中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line"><span class="comment"># 项目目录</span></span><br><span class="line"> chdir=/opt/project_teacher/teacher/</span><br><span class="line"> <span class="comment"># 启动uwsgi的用户名和用户组</span></span><br><span class="line"> uid=root</span><br><span class="line"> gid=root</span><br><span class="line"> <span class="comment"># 指定项目的application</span></span><br><span class="line"> module=teacher.wsgi:application</span><br><span class="line"> <span class="comment"># 指定sock的文件路径</span></span><br><span class="line"> socket=/opt/project_teacher/script/uwsgi.sock      <span class="comment"># sock文件是由uwsgi.ini文件启动之后自动生成</span></span><br><span class="line"> <span class="comment"># 启用主进程</span></span><br><span class="line"> master=true</span><br><span class="line"> <span class="comment"># 进程个数</span></span><br><span class="line"> workers=<span class="number">5</span></span><br><span class="line"> pidfile=/opt/project_teacher/script/uwsgi.pid</span><br><span class="line"> <span class="comment"># 自动移除unix Socket和pid文件当服务停止的时候</span></span><br><span class="line"> vacuum=true</span><br><span class="line"> <span class="comment"># 序列化接受的内容，如果可能的话</span></span><br><span class="line"> thunder-lock=true</span><br><span class="line"> <span class="comment"># 启用线程</span></span><br><span class="line"> enable-threads=true</span><br><span class="line"> <span class="comment"># 设置自中断时间</span></span><br><span class="line"> harakiri=<span class="number">30</span></span><br><span class="line"> <span class="comment"># 设置缓冲</span></span><br><span class="line"> post-buffering=<span class="number">4096</span></span><br><span class="line"> <span class="comment"># 设置日志目录</span></span><br><span class="line"> daemonize=/opt/project_teacher/script/uwsgi.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以上配置完成之后，启动uwsgi.ini文件，并查看进程</p>
-</li>
-<li><p>uwsgi到此为止，uwsgi已经配置完成了， 现在开始配置nginx， 进入以下目录修改default.conf文件</p>
-</li>
-<li><p>进入文件之后将下面的代码粘贴进文件中：</p>
-</li>
-<li><pre><code>server {
-        ``listen 80;
-        ``server_name 10.129.205.183 ;    # 域名
-        ``access_log /``var``/log/nginx/access.log main;
-        ``charset utf-8;
-        ``gzip ``on``;
-        ``gzip_types text/plain application/x-javascript text/css text/javascript application/x-httpd-php application/json text/json image/jpeg image/gif image/png application/octet-stream;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        ``error_page 404      /404.html;
-        ``error_page  500 502 503 504 /50x.html;
-        ``# 指定项目路径uwsgi
-        ``location / {
-          ``include uwsgi_params;
-          ``uwsgi_connect_timeout 30;
-          ``uwsgi_pass unix:/opt/project_teacher/script/uwsgi.sock;
-        ``}
-        ``# 指定静态文件路径
-        ``location /``static``/ {
-          ``alias /opt/project_teacher/teacher/``static``/;
-          ``index index.html index.htm;
-        ``}
-        }</code></pre></li>
-</ul>
-<ul>
-<li><p>至此项目就可以访问了</p>
-</li>
-<li><h5 id="为什么使用uwsgi-Nginx部署"><a href="#为什么使用uwsgi-Nginx部署" class="headerlink" title="为什么使用uwsgi + Nginx部署"></a>为什么使用uwsgi + Nginx部署</h5></li>
-<li><p>因为nginx具备优秀的静态内容处理能力，然后将动态内容转发给uWSGI服务器，这样可以达到很好的客户端响应。</p>
-</li>
-<li><p>支持的并发量更高，方便管理多进程，发挥多核的优势，提升性能</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/Nginx%20+%20Uwsgi%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis分布式锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">Redis分布式锁</a>
+    <h1 class="article-title" itemprop="name">
+      Redis分布式锁
     </h1>
   
 
@@ -745,6 +187,38 @@
       
 
       
+        
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢官爷打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/imgs/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/imgs/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -752,16 +226,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://windgirl0806.github.io/2020/06/18/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/06/18/Nginx%20+%20Uwsgi%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Nginx + Uwsgi部署Django项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/18/Redis%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis的乐观锁</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -781,251 +323,14 @@
 
 
 
-
-  
-    <article id="post-Redis的乐观锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/Redis%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81/">Redis的乐观锁</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/Redis%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:08.335Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="Redis的乐观锁"><a href="#Redis的乐观锁" class="headerlink" title="Redis的乐观锁"></a>Redis的乐观锁</h1><ul>
-<li><h5 id="watch指令类似于乐观锁，在事务提交时，"><a href="#watch指令类似于乐观锁，在事务提交时，" class="headerlink" title="watch指令类似于乐观锁，在事务提交时，"></a>watch指令类似于乐观锁，在事务提交时，</h5></li>
-<li><h5 id="如果watch监控的多个KEY中任何KEY的值已经被其他客户端更改，则使用EXEC执行事务时，事务队列将不会被执行"><a href="#如果watch监控的多个KEY中任何KEY的值已经被其他客户端更改，则使用EXEC执行事务时，事务队列将不会被执行" class="headerlink" title="如果watch监控的多个KEY中任何KEY的值已经被其他客户端更改，则使用EXEC执行事务时，事务队列将不会被执行"></a>如果watch监控的多个KEY中任何KEY的值已经被其他客户端更改，则使用EXEC执行事务时，事务队列将不会被执行</h5></li>
-<li><h5 id="同时返回Nullmulti-bulk应答以通知调用者事务执行失败。"><a href="#同时返回Nullmulti-bulk应答以通知调用者事务执行失败。" class="headerlink" title="同时返回Nullmulti-bulk应答以通知调用者事务执行失败。"></a>同时返回Nullmulti-bulk应答以通知调用者事务执行失败。</h5></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/Redis%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/MySQL%E4%BA%8B%E5%8A%A1/">MySQL事务</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/MySQL%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:27:02.522Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h1><p>1.事务是什么？</p>
-<ul>
-<li>事务是数据库系统区别于其他一切文件系统的重要特性之一</li>
-<li>事务要么是一组具有原子性的SQL语句，要么是一个独立工作的单元</li>
-</ul>
-<p>2.MySQL的事务具有那些特性？</p>
-<ul>
-<li>原子性<ul>
-<li>原子性就是一旦事务开始执行，那么就必须成功，或者失败，不会在执行期间的任意节点出错，如果失败则执行回滚至开始前的状态。，</li>
-</ul>
-</li>
-<li>一致性<ul>
-<li>在事务开始前以及结束后，数据库的完整性不被破坏。举个栗子：就是我要给张三转账100元，而事务执行的过程就是从我的账户扣除100元，在张三的账户上加上100元，其他事务对于这个事务执行的期间的状态是不可见的，只能知道我的状态是没转账，或是转账成功，而不知道我转账给张三，少了100元，张三多了100这个中间状态</li>
-</ul>
-</li>
-<li>隔离性<ul>
-<li>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。</li>
-</ul>
-</li>
-<li>持久性<ul>
-<li>事务执行结束后，一经提交，对数据库的修改是永久的。</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/MySQL%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL的事务隔离级别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/MySQL%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">MySQL的事务隔离级别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/MySQL%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:26:57.491Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="busuanzi_container_page_pv" style="font-size: 16px;color: rgb(153,153,153);line-height: 1.8em;">总阅读量<span id="busuanzi_value_page_pv"></span>次</span>
-        <h1 id="MySQL的事务隔离级别"><a href="#MySQL的事务隔离级别" class="headerlink" title="MySQL的事务隔离级别"></a>MySQL的事务隔离级别</h1><h5 id="1-MySQL的四种隔离级别"><a href="#1-MySQL的四种隔离级别" class="headerlink" title="1.MySQL的四种隔离级别"></a>1.MySQL的四种隔离级别</h5><ul>
-<li>SQL标准中定义的MySQL的四种隔离级别<ul>
-<li>读未提交 （脏读）<ul>
-<li>故名思意就是一个事务可以读取另一个未提交的事务。</li>
-</ul>
-</li>
-<li>读已提交<ul>
-<li>就是一个事务只能读取已经提交的事务</li>
-</ul>
-</li>
-<li>可重复读<ul>
-<li>事务开启后，不再允许其他事务对这个事务对象进行操作</li>
-</ul>
-</li>
-<li>序列化 （可串行化）<ul>
-<li>序列化是事务隔离性最高级别，他是将事务串行化，并按顺序执行，这样就解决了幻读，不可重复读，脏读。不过占用数据库性能比较大，一般不用。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/MySQL%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1048,8 +353,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
